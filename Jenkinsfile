@@ -36,6 +36,7 @@ pipeline {
         }
      stage('Login') {
       steps {
+	sh 'chmod +x -R ${env.WORKSPACE}'
         sh './login.sh'
       }
     }
