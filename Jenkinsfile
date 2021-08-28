@@ -24,7 +24,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp ashishut/samplewebapp:latest'
+                sh 'docker tag samplewebapp sona09/samplewebapp:latest'
                 //sh 'docker tag samplewebapp samplewebapp:$BUILD_NUMBER'
                
           }
@@ -33,8 +33,8 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry(credentialsId: '3d36c726-8563-479d-9af7-035ade8d1dc5', url: 'https://hub.docker.com/repository/docker/ashishut')  {
-          sh  'docker push ashishut/samplewebapp:latest'
+        withDockerRegistry(credentialsId: 'eeea852e-a8d8-4666-afc6-711598f84132', url: 'https://hub.docker.com/repository/docker/sona09/myrepo') {
+          sh  'docker push sona09/samplewebapp:latest'
         //sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
         }
                   
