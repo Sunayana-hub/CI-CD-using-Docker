@@ -31,7 +31,7 @@ pipeline {
         }
      stage('Login') {
       steps {
-        sh './jenkins/login.sh'
+        sh './login.sh'
       }
     }
   stage('Publish image to Docker Hub') {
