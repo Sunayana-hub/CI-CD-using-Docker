@@ -24,7 +24,7 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp sona09/samplewebapp:latest'
+                sh 'docker tag samplewebapp sona09/myrepo:latest'
                 //sh 'docker tag samplewebapp samplewebapp:$BUILD_NUMBER'
                
           }
@@ -46,7 +46,7 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 samplewebapp"
+                sh "docker run -d -p 8003:8080 myrepo:latest"
  
             }
         }
