@@ -5,7 +5,9 @@ pipeline {
     {
        maven "Maven"
     }
-	
+	environment {
+  DOCKERHUB_CREDENTIALS = "sona09"
+}
 	stages {
       stage('checkout') {
            steps {
