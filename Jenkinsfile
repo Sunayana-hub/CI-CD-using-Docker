@@ -33,7 +33,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: ""]) {
+        withDockerRegistry(credentialsId: '3f3dcab8-30b7-45e5-a4a5-92cf46409301', url: 'https://hub.docker.com/repository/docker/sona09/myrepo') {
           //sh  'docker push sona09/samplewebapp:latest'
 		sh 'docker push sona09/myrepo:samplewebapp2'
         //sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
