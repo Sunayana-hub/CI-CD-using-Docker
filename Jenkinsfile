@@ -23,23 +23,23 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t samplewebapp3:latest .' 
-                sh 'docker tag samplewebapp2 sona09/myrepo:samplewebapp3'
+                sh 'docker build -t samplewebapp4:latest .' 
+                sh 'docker tag samplewebapp4 sona09/myrepo:samplewebapp4'
                 //sh 'docker tag samplewebapp samplewebapp:$BUILD_NUMBER'
                
           }
         }
-     
+     stage('Login') {
+      steps {
+        sh './jenkins/login.sh'
+      }
+    }
   stage('Publish image to Docker Hub') {
           
             steps {
-		   
-        withDockerRegistry(credentialsId: 'DockerHub', url: 'https://hub.docker.com/repository/docker/sona09/myrepo') {
-          //sh  'docker push sona09/samplewebapp:latest'
-		sh 'docker push sona09/myrepo:samplewebapp3'
+	sh 'docker push sona09/myrepo:samplewebapp4'
         //sh  'docker push nikhilnidhi/samplewebapp:$BUILD_NUMBER' 
-        }
-                  
+                          
           }
         }
      
@@ -47,7 +47,7 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 sona09/myrepo:samplewebapp3"
+                sh "docker run -d -p 8003:8080 sona09/myrepo:samplewebapp4"
  
             }
         }
