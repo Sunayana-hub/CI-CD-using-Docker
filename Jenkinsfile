@@ -6,11 +6,7 @@ pipeline {
        maven "Maven"
     }
 	
-	environment {
-    DOCKERHUB_CREDENTIALS = credentials('sona09')
-  }
-
- stages {
+	stages {
       stage('checkout') {
            steps {
              
@@ -36,7 +32,6 @@ pipeline {
         }
      stage('Login') {
       steps {
-	sh 'chmod +x -R ${env.WORKSPACE}'
         sh './login.sh'
       }
     }
