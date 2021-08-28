@@ -7,8 +7,8 @@ pipeline {
     }
 	
 	environment {
-  DOCKERHUB_CREDENTIALS = credentials('sona09')
-}
+    DOCKERHUB_CREDENTIALS = credentials('sona09')
+  }
 
  stages {
       stage('checkout') {
